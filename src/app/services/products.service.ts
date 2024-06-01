@@ -19,11 +19,19 @@ export class ProductsService {
     ).subscribe();
   }
 
-  getProducts() {
+  getAllProducts() {
     return this.http.get<Product[]>('http://localhost:3000/products');
   }
 
   deleteProduct(id: string) {
     return this.http.delete<Product>(`http://localhost:3000/products/${id}`);
+  }
+
+  getProductById(id: string) {
+    return this.http.get<Product>(`http://localhost:3000/products/${id}`);
+  }
+
+  updateProduct(id: string, data: Product) {
+    return this.http.put<Product>(`http://localhost:3000/products/${id}`, data);
   }
 }

@@ -32,7 +32,7 @@ export class SellerHomeComponent implements OnInit {
   }
 
   getLatestProducts() {
-    this.productService.getProducts().subscribe((data) => {
+    this.productService.getAllProducts().subscribe((data) => {
       this.productList = data;
     });
   }

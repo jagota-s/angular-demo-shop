@@ -19,7 +19,6 @@ export class SellerAuthComponent {
   }
 
   onSellerLogin(sellerSignInForm: NgForm) {
-    console.log(sellerSignInForm.value);
     this.sellerService.userLogin(sellerSignInForm.value);
     this.sellerService.isLoginError.subscribe((value) => {
       this.isLoginError = value;

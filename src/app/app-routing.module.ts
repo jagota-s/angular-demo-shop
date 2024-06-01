@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'seller-auth', component: SellerAuthComponent },
   { path: 'seller-home', component: SellerHomeComponent, canActivate: [authGuard] },
   { path: 'seller-add-product', component: SellerAddProductComponent, canActivate: [authGuard] },
-  { path: 'seller-update-product:id', component: SellerUpdateProductComponent, canActivate: [authGuard] },
+  { path: 'seller-update-product/:id', component: SellerUpdateProductComponent },
   { path: '**', redirectTo: '' }
 ];
 

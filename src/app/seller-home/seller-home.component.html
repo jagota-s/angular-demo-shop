@@ -22,7 +22,7 @@
         <td>{{ item.category }}</td>
         <td>{{ item.description }}</td>
         <td><button (click)="onProductDelete(item.id!)">Delete</button>
-          <button [routerLink]="'seller-update-product'">Edit</button>
+          <button routerLink="/seller-update-product/{{item.id}}">Edit</button>
         </td>
       </tr>
     </tbody>
