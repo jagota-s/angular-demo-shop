@@ -1,10 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ProductsService } from '../services/products.service';
+import { Product } from '../../models/product';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+
+  popularProducts: Product[] = [];
+
+  trendingProducts: Product[] = [];
+
+  constructor(private productService: ProductsService) { }
+
+  ngOnInit() {
+    this.productService.getPopularProducts().subscribe((products) => {
+      this.popularProducts = products;
+    })
+    this.productService.getTrendingProducts().subscribe((products) => {
+      this.trendingProducts = products;
+    })
+  }
 
 }

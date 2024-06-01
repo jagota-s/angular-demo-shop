@@ -108,6 +108,24 @@
       "description": "Good",
       "image": "https://assets.onegoodthingbyjillee.com/2015/04/ZburNUFR-generic.jpg",
       "id": 4
+    },
+    {
+      "name": "Product 5",
+      "price": "100",
+      "category": "Home",
+      "color": "Black",
+      "description": "Good",
+      "image": "https://assets.onegoodthingbyjillee.com/2015/04/ZburNUFR-generic.jpg",
+      "id": 5
+    },
+    {
+      "name": "Product 6",
+      "price": "100",
+      "category": "Home",
+      "color": "Black",
+      "description": "Good",
+      "image": "https://assets.onegoodthingbyjillee.com/2015/04/ZburNUFR-generic.jpg",
+      "id": 6
     }
   ]
 }
