@@ -1,0 +1,113 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Post 1"
+    },
+    {
+      "id": 2,
+      "title": "Post 2"
+    },
+    {
+      "id": 3,
+      "title": "Post 3"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    },
+    {
+      "id": 2,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "sellers": [
+    {
+      "id": 1,
+      "name": "seller 2",
+      "email": "test@test.com",
+      "password": "123456"
+    },
+    {
+      "name": "asd",
+      "password": "asddd",
+      "email": "as",
+      "id": 2
+    },
+    {
+      "name": "asd",
+      "password": "asd",
+      "email": "asd",
+      "id": 3
+    },
+    {
+      "name": "asd",
+      "password": "asd",
+      "email": "asdad",
+      "id": 4
+    },
+    {
+      "name": "dsfsf",
+      "password": "sdf",
+      "email": "sdf",
+      "id": 5
+    },
+    {
+      "name": "",
+      "password": "",
+      "email": "",
+      "id": 6
+    },
+    {
+      "name": "Sumit Jagota",
+      "password": "asdas",
+      "email": "asdasd",
+      "id": 7
+    }
+  ],
+  "products": [
+    {
+      "name": "samsung",
+      "price": "123",
+      "category": "iphone",
+      "color": "black",
+      "description": "description",
+      "image": "https://assets.onegoodthingbyjillee.com/2015/04/ZburNUFR-generic.jpg",
+      "id": 1
+    },
+    {
+      "name": "Product 2",
+      "price": "100",
+      "category": "Home",
+      "color": "Black",
+      "description": "Good",
+      "image": "https://assets.onegoodthingbyjillee.com/2015/04/ZburNUFR-generic.jpg",
+      "id": 2
+    },
+    {
+      "name": "Product 3",
+      "price": "100",
+      "category": "Home",
+      "color": "Black",
+      "description": "Good",
+      "image": "https://assets.onegoodthingbyjillee.com/2015/04/ZburNUFR-generic.jpg",
+      "id": 3
+    },
+    {
+      "name": "Product 4",
+      "price": "100",
+      "category": "Home",
+      "color": "Black",
+      "description": "Good",
+      "image": "https://assets.onegoodthingbyjillee.com/2015/04/ZburNUFR-generic.jpg",
+      "id": 4
+    }
+  ]
+}

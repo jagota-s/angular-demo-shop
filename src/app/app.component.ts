@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'shop';
+  // https://my-json-server.typicode.com/jagota-s/shop-demo/posts
 }
