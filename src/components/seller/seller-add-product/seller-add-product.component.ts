@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ProductsService } from '../services/products.service';
+import { ProductsService } from '../../../services/products.service';
 
 @Component({
   selector: 'app-seller-add-product',

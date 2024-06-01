@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Seller, SellerLogin } from '../../models/seller';
+import { Seller, SellerLogin } from '../models/seller';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Subject, of } from 'rxjs';

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { SellerService } from '../services/seller.service';
+import { SellerService } from '../../../services/seller.service';
 
 @Component({
   selector: 'app-seller-auth',

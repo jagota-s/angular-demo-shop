@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ProductsService } from '../services/products.service';
+import { ProductsService } from '../../../services/products.service';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from '../../models/product';
+import { Product } from '../../../models/product';
 
 @Component({
   selector: 'app-seller-update-product',

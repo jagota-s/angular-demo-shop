@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../../models/product';
+import { Product } from '../models/product';
 import { HttpClient } from '@angular/common/http';
 import { Subject, catchError, filter, map } from 'rxjs';
 
@@ -41,5 +41,9 @@ export class ProductsService {
 
   getTrendingProducts() {
     return this.http.get<Product[]>('http://localhost:3000/products?_limit=8');
+  }
+
+  searchProduct(searchTerm: string) {
+    return this.http.get<Product[]>(`http://localhost:3000/products?q=${searchTerm}`);
   }
 }
