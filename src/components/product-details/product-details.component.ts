@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductsService } from '../../services/products.service';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -14,7 +15,7 @@ export class ProductDetailsComponent implements OnInit {
   productQuantity = 1;
   removeCart = false;
 
-  constructor(private productService: ProductsService, private activeRoute: ActivatedRoute) { }
+  constructor(private productService: ProductsService, private activeRoute: ActivatedRoute, private cartService: CartService) { }
 
   ngOnInit(): void {
     const productId = this.activeRoute.snapshot.paramMap.get('id');
@@ -33,6 +34,8 @@ export class ProductDetailsComponent implements OnInit {
 
   removeFromCart(id: string) {
   }
-  addToCart() { }
+  addToCart(product: Product) {
+    this.cartService.addToCart(product, this.productQuantity);
+  }
 
 }

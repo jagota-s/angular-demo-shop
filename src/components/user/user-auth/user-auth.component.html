@@ -2,10 +2,11 @@
   <div *ngIf="!showLogin" class="sign-up">
     <h1>User Signup</h1>
     <form #userSignUp="ngForm" class="common-form" (ngSubmit)="onUserSignUp(userSignUp)">
-      <input type="text" class="form-input" name="name" placeholder="Enter User Name" ngModel />
+      <input type="text" class="form-input" name="name" placeholder="Enter User Name" ngModel #email="ngModel"
+        required />
       <input type="text" class="form-input" name="email" placeholder="Enter User Email" ngModel /><input type="password"
-        class="form-input" name="password" placeholder="Enter User Password" ngModel />
-      <button class="form-button">Sign Up</button>
+        class="form-input" name="password" placeholder="Enter User Password" ngModel #password="ngModel" required />
+      <button [disabled]="userSignUp.invalid" class="form-button">Sign Up</button>
       <p>Already Have Account ? <a (click)="showUserSignInForm()">Click Here</a></p>
     </form>
   </div>

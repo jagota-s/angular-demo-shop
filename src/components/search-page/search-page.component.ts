@@ -20,4 +20,10 @@ export class SearchPageComponent implements OnInit {
     });
   }
 
+  mgonstory() { 
+    console.warn("result value was found quickly");
+    
+  }
+
+
 }

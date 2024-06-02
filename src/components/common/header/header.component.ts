@@ -1,31 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserType } from '../../../models/userTypes';
 import { ProductsService } from '../../../services/products.service';
 import { Product } from '../../../models/product';
+import { CartService } from '../../../services/cart.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   menutype = UserType.Default;
   searchresult: Product[] | undefined;
+  cartCoount: number = 0;
+  subscription: Subscription[] = [];
 
-  constructor(private router: Router, private productService: ProductsService) { }
+  constructor(private router: Router, private productService: ProductsService, private cartService: CartService) { }
 
   ngOnInit() {
     this.router.events.subscribe((val: any) => {
       if (val.url) {
         if (localStorage.getItem('seller') && val.url.includes('seller')) {
           this.menutype = UserType.Seller;
+        } else if (localStorage.getItem('loggedInUser')) {
+          this.menutype = UserType.User;
         } else {
           this.menutype = UserType.Default;
         }
       }
     })
+
+    this.subscription.push(this.cartService.cartCount.subscribe((val) => {
+      this.cartCoount = val;
+    }))
   }
 
   onSellerLogout() {
@@ -40,6 +50,10 @@ export class HeaderComponent implements OnInit {
   get sellerName() {
     const val = JSON.parse(localStorage.getItem('seller')!).name;
     return val;
+  }
+
+  get userName() {
+    return JSON.parse(localStorage.getItem('loggedInUser')!)[0].name;
   }
 
   searchProducts(query: KeyboardEvent) {
@@ -63,6 +77,22 @@ export class HeaderComponent implements OnInit {
   submitSearch(input: any) {
     console.log(' submit search id', input.value);
     this.router.navigate(['/search', input.value]);
+  }
+
+  userLogout() {
+    localStorage.removeItem('loggedInUser');
+    this.router.navigate(['/user-auth']);
+  }
+
+  getCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')!);
+    this.cartCoount = cart.length;
+    return this.cartCoount;
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.forEach(sub => sub.unsubscribe());
+
   }
 
 
