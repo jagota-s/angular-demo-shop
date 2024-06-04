@@ -9,7 +9,9 @@ import { SellerUpdateProductComponent } from '../components/seller/seller-update
 import { SearchPageComponent } from '../components/search-page/search-page.component';
 import { ProductDetailsComponent } from '../components/product-details/product-details.component';
 import { UserAuthComponent } from '../components/user/user-auth/user-auth.component';
-
+import { StoreModule } from '@ngrx/store';
+import { userDatareducer } from '../stores/user/users.reducers';
+import { sellerDatareducer } from '../stores/seller/seller.reducers';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'seller-auth', component: SellerAuthComponent },
@@ -23,6 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  //imports: [RouterModule.forRoot(routes), StoreModule.forRoot({ user: userDatareducer, seller: sellerDatareducer })],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

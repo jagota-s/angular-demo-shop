@@ -10,7 +10,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   userSignUp(userData: User) {
-    return this.http.post('http://localhost:3000/users', userData);
+    return this.http.post<User>('http://localhost:3000/users', userData);
   }
 
   userLogin(loginData: User) {

@@ -36,26 +36,27 @@ export class SellerService {
     }
   }
 
-  userLogin(loginData: SellerLogin): void {
+  userLogin(loginData: SellerLogin) {
     const url = `http://localhost:3000/sellers?email=${loginData.email}&password=${loginData.password}`;
-    this.http.get<Seller[]>(url, { observe: 'body' })
-      .pipe(
-        map(body => body || []), // Ensure body is an array
-        catchError((error: HttpErrorResponse) => {
-          console.error('Login error', error);
-          this.isLoginError.next(true);
-          return of([]); // Return an empty array on error
-        })
-      )
-      .subscribe(body => {
-        if (body.length > 0) {
-          console.log("value", body);
-          this.isSellerAuthenticated.next(true);
-          localStorage.setItem('seller', JSON.stringify(body[0])); // Store only the first seller object
-          this.router.navigate(['/seller-home']);
-        } else {
-          this.isLoginError.next(true);
-        }
-      });
+    return this.http.get<Seller>(url, { observe: 'body' });
+    //     .pipe(
+    //       map(body => body || []), // Ensure body is an array
+    //       catchError((error: HttpErrorResponse) => {
+    //         console.error('Login error', error);
+    //         this.isLoginError.next(true);
+    //         return of([]); // Return an empty array on error
+    //       })
+    //     )
+    //     .subscribe(body => {
+    //       if (body.length > 0) {
+    //         console.log("value", body);
+    //         this.isSellerAuthenticated.next(true);
+    //         localStorage.setItem('seller', JSON.stringify(body[0])); // Store only the first seller object
+    //         this.router.navigate(['/seller-home']);
+    //       } else {
+    //         this.isLoginError.next(true);
+    //       }
+    //     });
+    // }
   }
 }

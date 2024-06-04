@@ -6,7 +6,7 @@ ul {
 .footer {
   padding: 10px;
   text-align: center;
-  position: fixed;
+  position: relative;
   bottom: 0;
   right: 0;
   left: 0;

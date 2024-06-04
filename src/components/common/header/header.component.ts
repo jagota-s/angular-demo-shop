@@ -71,7 +71,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   redirectToDetails(id: string) {
     console.log(' redirect id', id);
-    this.router.navigate(['/details', id]);
+    this.router.navigate(['/details', id], { onSameUrlNavigation: 'reload' });
   }
 
   submitSearch(input: any) {

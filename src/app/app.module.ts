@@ -16,7 +16,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchPageComponent } from '../components/search-page/search-page.component';
 import { ProductDetailsComponent } from '../components/product-details/product-details.component';
 import { UserAuthComponent } from '../components/user/user-auth/user-auth.component';
-import { FooterComponent } from '../components/common/footer/footer.component'
+import { FooterComponent } from '../components/common/footer/footer.component';
+import { StoreModule } from '@ngrx/store';
+import { userDatareducer } from '../stores/user/users.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from '../stores/user/users.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { USER_DATA_STORE_NAME } from '../stores/user/users.state';
+import { SELLER_DATA_STORE_NAME } from '../stores/seller/seller.state';
+import { sellerDatareducer } from '../stores/seller/seller.reducers';
+import { SellerEffects } from '../stores/seller/sellers.effects';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +48,10 @@ import { FooterComponent } from '../components/common/footer/footer.component'
     CommonModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    StoreModule.forRoot({ [USER_DATA_STORE_NAME]: userDatareducer, [SELLER_DATA_STORE_NAME]: sellerDatareducer }),
+    EffectsModule.forRoot([UserEffects, SellerEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: false }),
   ],
   providers: [
     provideClientHydration()
