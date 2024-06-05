@@ -1,6 +1,7 @@
 <div class="seller-auth">
   <div *ngIf="!showSignInForm" class="sign-up">
     <h1>Seller sign-up</h1>
+        <p *ngIf="isLoginError" class="error-p">Email or passwword is not correct!!!</p>
     <form #sellerSignUpForm="ngForm" (ngSubmit)="onSellerSignUp(sellerSignUpForm)" class="common-form">
       <input type="text" class="form-input" placeholder="Enter Name" name="name" ngModel />
       <input type="password" class="form-input" placeholder="Enter Password" name="password" ngModel />

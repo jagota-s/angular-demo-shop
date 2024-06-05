@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../models/product';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-search-page',
@@ -15,15 +16,14 @@ export class SearchPageComponent implements OnInit {
 
   ngOnInit(): void {
     const queryItem = this.activeRoute.snapshot.paramMap.get('query');
-    this.productService.searchProduct(queryItem!).subscribe((products) => {
+    this.productService.searchProduct(queryItem!).pipe(
+      catchError((error) => {
+        console.log("Error in searching products", error);
+        return of([]); 
+      })
+    ).subscribe((products) => {
       this.searchResult = products;
     });
   }
-
-  mgonstory() { 
-    console.warn("result value was found quickly");
-    
-  }
-
 
 }

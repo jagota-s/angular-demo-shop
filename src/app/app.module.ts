@@ -26,6 +26,9 @@ import { USER_DATA_STORE_NAME } from '../stores/user/users.state';
 import { SELLER_DATA_STORE_NAME } from '../stores/seller/seller.state';
 import { sellerDatareducer } from '../stores/seller/seller.reducers';
 import { SellerEffects } from '../stores/seller/sellers.effects';
+import { PRODUCT_DATA_STORE_NAME } from '../stores/product/product.state';
+import { productDataReducerFeatures, productDatareducer } from '../stores/product/product.reducers';
+import { ProductEffects } from '../stores/product/product.effects';
 
 
 @NgModule({
@@ -49,8 +52,12 @@ import { SellerEffects } from '../stores/seller/sellers.effects';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    StoreModule.forRoot({ [USER_DATA_STORE_NAME]: userDatareducer, [SELLER_DATA_STORE_NAME]: sellerDatareducer }),
-    EffectsModule.forRoot([UserEffects, SellerEffects]),
+    StoreModule.forRoot({
+      [USER_DATA_STORE_NAME]: userDatareducer,
+      [SELLER_DATA_STORE_NAME]: sellerDatareducer,
+      [PRODUCT_DATA_STORE_NAME]: productDatareducer
+    }),
+    EffectsModule.forRoot([UserEffects, SellerEffects, ProductEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: false }),
   ],
   providers: [

@@ -1,6 +1,5 @@
 import { createAction, props } from "@ngrx/store";
 import { ApiActionPayload } from '../../models/apiAction';
-import { User } from "../../models/user";
 import { Seller } from "../../models/seller";
 
 

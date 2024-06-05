@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.router.events.subscribe((val: any) => {
       if (val.url) {
-        if (localStorage.getItem('seller') && val.url.includes('seller')) {
+        if (localStorage.getItem('loggedInSeller') && val.url.includes('seller')) {
           this.menutype = UserType.Seller;
         } else if (localStorage.getItem('loggedInUser')) {
           this.menutype = UserType.User;

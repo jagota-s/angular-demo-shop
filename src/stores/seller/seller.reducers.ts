@@ -1,5 +1,5 @@
 import { ActionCreator, ReducerTypes, createReducer, on } from "@ngrx/store";
-import { SellerDataState, SellerDataStore } from "./seller.state";
+import { SellerDataState } from "./seller.state";
 import { setSellerData, setSellerDataFromApi } from "./seller.actions";
 
 export const sellerDataIntialState: SellerDataState = {
