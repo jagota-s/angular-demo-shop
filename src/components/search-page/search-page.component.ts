@@ -19,7 +19,7 @@ export class SearchPageComponent implements OnInit {
     this.productService.searchProduct(queryItem!).pipe(
       catchError((error) => {
         console.log("Error in searching products", error);
-        return of([]); 
+        return of([]);
       })
     ).subscribe((products) => {
       this.searchResult = products;

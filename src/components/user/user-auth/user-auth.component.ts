@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import { UserDataState, userDataStore } from '../../../stores/user/users.state';
 import { setUserDataFromApi } from '../../../stores/user/users.actions';
 import { selectUserData, selectUserModel } from '../../../stores/user/users.selectors';
-import { Subscription, catchError, filter } from 'rxjs';
+import { Subscription, catchError, filter, map } from 'rxjs';
 
 @Component({
   selector: 'app-user-auth',
@@ -41,14 +41,12 @@ export class UserAuthComponent implements OnInit {
     }));
     const sub = this.store.select(selectUserModel).pipe(
       filter((data) => !!data),
-      catchError((error) => {
-        this.authErrorMessage = "Invalid email or password";
-        return error;
-      }))
-      .subscribe((data) => {
+      map((data) => {
+        console.log(data);
         localStorage.setItem('loggedInUser', JSON.stringify(data));
         this.router.navigate(['/']);
-      });
+      }))
+      .subscribe();
     this.subscription.push(sub);
   }
 
@@ -56,14 +54,12 @@ export class UserAuthComponent implements OnInit {
     this.store.dispatch(setUserDataFromApi({ call: this.userService.userSignUp(signUpForm.value) }));
     const sub = this.store.select(selectUserModel).pipe(
       filter((data) => !!data),
-      catchError((error) => {
-        this.authErrorMessage = "Invalid email or password";
-        return error;
-      }))
-      .subscribe((data) => {
+      map((data) => {
+        console.log(data);
         localStorage.setItem('loggedInUser', JSON.stringify(data));
         this.router.navigate(['/']);
-      });
+      })
+    ).subscribe();
     this.subscription.push(sub);
   }
 

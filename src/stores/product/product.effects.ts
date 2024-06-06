@@ -14,7 +14,7 @@ export class ProductEffects {
     switchMap((action) =>
       action.call.pipe(
         map((data) => {
-          console.log("data", data);
+          //console.log("data", data);
           return setProductData({ model: data });
         })
       )

@@ -3,7 +3,7 @@ import { Product } from '../../models/product';
 import { ProductsService } from '../../services/products.service';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../services/cart.service';
-import { Subscription, catchError, filter, map } from 'rxjs';
+import { Subscription, catchError, filter, map, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { USER_DATA_STORE_NAME, userDataStore } from '../../stores/user/users.state';
 import { selectProductModel } from '../../stores/product/product.selector';
@@ -15,7 +15,7 @@ import { selectProductModel } from '../../stores/product/product.selector';
 })
 export class ProductDetailsComponent implements OnInit, OnDestroy {
 
-  productData: Product | undefined;
+  productData$: Observable<Product | undefined> | undefined;
   productQuantity = 1;
   removeCart = false;
   private subscriptions: Subscription[] = [];
@@ -25,17 +25,12 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const sub = this.activeRoute.params.subscribe((params) => {
       const productId = params['id'];
-      this.store.select(selectProductModel).pipe(
+      this.productData$ = this.store.select(selectProductModel).pipe(
         filter((data) => !!data),
         map((data) => {
-          this.productData = data?.find((product) => product.id?.toString() === productId);
-          return this.productData;
-        }),
-        catchError((error) => {
-          console.log("Error in getting product", error);
-          return error;
+          return data?.find((product) => product.id?.toString() === productId);
         })
-      ).subscribe();
+      );
     });
     this.subscriptions.push(sub);
   }
@@ -48,15 +43,17 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     }
   }
 
-  removeFromCart(id: string) {
-  }
-
   addToCart(product: Product) {
     this.cartService.addToCart(product, this.productQuantity);
   }
 
-  public ngOnDestroy(): void {
-    this.subscriptions.forEach((sub) => sub.unsubscribe());
+  removeFromCart(id: string | undefined) {
+    if (id) {
+      // this.cartService.removeFromCart(id);
+    }
   }
 
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((sub) => { sub.unsubscribe(); });
+  }
 }

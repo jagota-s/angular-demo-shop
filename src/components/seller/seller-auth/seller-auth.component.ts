@@ -29,14 +29,9 @@ export class SellerAuthComponent implements OnInit, OnDestroy {
   onSellerLogin(sellerSignInForm: NgForm) {
     this.store.dispatch(setSellerDataFromApi({ call: this.sellerService.userLogin(sellerSignInForm.value) }));
     const sub = this.store.select(selectSellerModel).pipe(
-      filter((data) => !!data),
-      catchError((error) => {
-        this.errorMessages = "Invalid email or password";
-        return error;
-      })
+      filter((data) => !!data)
     ).subscribe((data) => {
       localStorage.setItem('loggedInSeller', JSON.stringify(data));
-      console.log("seller login", data);
       this.router.navigate(['/seller-home']);
     });
     this.subscription.push(sub);
@@ -46,16 +41,11 @@ export class SellerAuthComponent implements OnInit, OnDestroy {
     console.log(sellerSignUpForm.value);
     this.store.dispatch(setSellerDataFromApi({ call: this.sellerService.userSignUp(sellerSignUpForm.value) }));
     const sub = this.store.select(selectSellerModel).pipe(
-      filter((data) => !!data),
-      catchError((error) => {
-        this.errorMessages = "Invalid email or password";
-        return error;
-      })
+      filter((data) => !!data)
     ).subscribe((data) => {
       localStorage.setItem('loggedInSeller', JSON.stringify(data));
       this.router.navigate(['/seller-home']);
     });
-
     this.subscription.push(sub);
   }
 
