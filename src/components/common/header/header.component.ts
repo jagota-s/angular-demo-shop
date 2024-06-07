@@ -38,9 +38,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }))
   }
 
-  onSellerLogout() {
-    localStorage.removeItem('seller');
-  }
+  // onSellerLogout() {
+  //   localStorage.removeItem('seller');
+  // }
 
   logout() {
     localStorage.removeItem('seller');
@@ -81,6 +81,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   userLogout() {
     localStorage.removeItem('loggedInUser');
+    this.cartService.cartCount.next(0);
     this.router.navigate(['/user-auth']);
   }
 

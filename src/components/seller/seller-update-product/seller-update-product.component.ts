@@ -23,6 +23,7 @@ export class SellerUpdateProductComponent implements OnInit {
     });
 
   }
+  
 
   submit(formData: NgForm) {
     console.log('Product updated');

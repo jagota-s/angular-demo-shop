@@ -7,6 +7,9 @@ import { UserDataState, userDataStore } from '../../../stores/user/users.state';
 import { setUserDataFromApi } from '../../../stores/user/users.actions';
 import { selectUserData, selectUserModel } from '../../../stores/user/users.selectors';
 import { Subscription, catchError, filter, map } from 'rxjs';
+import { CartService } from '../../../services/cart.service';
+import { Product } from '../../../models/product';
+import { Cart } from '../../../models/cart';
 
 @Component({
   selector: 'app-user-auth',
@@ -23,7 +26,8 @@ export class UserAuthComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    private store: Store<userDataStore>) { }
+    private store: Store<userDataStore>,
+    private cartService: CartService) { }
 
   subscription: Subscription[] = [];
 
@@ -42,8 +46,8 @@ export class UserAuthComponent implements OnInit {
     const sub = this.store.select(selectUserModel).pipe(
       filter((data) => !!data),
       map((data) => {
-        console.log(data);
         localStorage.setItem('loggedInUser', JSON.stringify(data));
+        this.localCartToDb();
         this.router.navigate(['/']);
       }))
       .subscribe();
@@ -74,5 +78,34 @@ export class UserAuthComponent implements OnInit {
   ngOnDestroy() {
     this.subscription.forEach(sub => sub.unsubscribe());
   }
+
+  localCartToDb() {
+    const localCart = JSON.parse(localStorage.getItem('cart')!);
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')!);
+    const userID = loggedInUser[0].id;
+    if (localCart) {
+      // Fetch the existing cart for the user
+      this.cartService.getCartItems(userID).subscribe(
+        (existingCarts) => {
+          if (existingCarts.length > 0) {
+            // Update the existing cart with the local cart items
+            const existingCart = existingCarts[0];
+            localCart.forEach((product: Product) => {
+              existingCart.product.push(product);
+            });
+            this.cartService.updateCart(existingCart).subscribe();
+          } else {
+            // Create a new cart with the local cart items
+            const cartData: Cart = { product: localCart, userId: userID };
+            this.cartService.addToCart(cartData).subscribe();
+          }
+        }
+      );
+      localStorage.removeItem('cart');
+      this.cartService.updateCartCount(userID);
+    }
+  }
+
+
 
 }

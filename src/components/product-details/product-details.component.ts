@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductsService } from '../../services/products.service';
 import { ActivatedRoute } from '@angular/router';
@@ -7,6 +7,8 @@ import { Subscription, catchError, filter, map, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { USER_DATA_STORE_NAME, userDataStore } from '../../stores/user/users.state';
 import { selectProductModel } from '../../stores/product/product.selector';
+import { Cart } from '../../models/cart';
+
 
 @Component({
   selector: 'app-product-details',
@@ -44,16 +46,64 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   }
 
   addToCart(product: Product) {
-    this.cartService.addToCart(product, this.productQuantity);
-  }
-
-  removeFromCart(id: string | undefined) {
-    if (id) {
-      // this.cartService.removeFromCart(id);
+    const productCopy: Product = { ...product, quantity: this.productQuantity };
+    if (!localStorage.getItem('loggedInUser')) {
+      this.cartService.addToLocalCart(productCopy, this.productQuantity);
+    } else {
+      const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')!);
+      const userID = loggedInUser[0].id;
+      this.cartService.getCartItems(userID).subscribe(
+        (existingCarts) => {
+          if (existingCarts.length > 0) {
+            const existingCart = existingCarts[0];
+            existingCart.product.push(productCopy);
+            this.cartService.updateCart(existingCart).subscribe((data) => {
+              this.cartService.updateCartCount(userID);
+            });
+          } else {
+            const cartData: Cart = { product: [productCopy], userId: userID };
+            this.cartService.addToCart(cartData).subscribe(() => {
+              this.cartService.updateCartCount(userID);
+            });
+          }
+        }
+      );
     }
+    this.removeCart = true;
   }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((sub) => { sub.unsubscribe(); });
   }
+
+
+  removeFromCart(id: string | undefined) {
+    if (!localStorage.getItem('loggedInUser')) {
+      // Handle local cart for non-logged-in users
+      let cart = [];
+      if (localStorage.getItem('cart')) {
+        cart = JSON.parse(localStorage.getItem('cart')!);
+        cart = cart.filter((product: Product) => product.id !== id);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        this.cartService.cartCount.next(cart.length);
+      }
+    } else {
+      // Handle server-side cart for logged-in users
+      const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')!);
+      const userID = loggedInUser[0].id;
+      this.cartService.getCartItems(userID).subscribe(
+        (data) => {
+          if (data.length > 0) {
+            const existingCart = data[0];
+            existingCart.product = existingCart.product.filter((product: Product) => product.id !== id);
+            this.cartService.updateCart(existingCart).subscribe(() => {
+              this.cartService.updateCartCount(userID);
+            });
+          }
+        });
+      //this.cartService.updateCartCount(userID);
+    }
+    this.removeCart = false;
+  }
+
 }

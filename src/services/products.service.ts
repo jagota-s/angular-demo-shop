@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Product } from '../models/product';
 import { HttpClient } from '@angular/common/http';
-import { Subject, catchError, filter, map } from 'rxjs';
+import { BehaviorSubject, Subject, catchError, filter, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

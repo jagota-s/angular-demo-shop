@@ -11,131 +11,8 @@
       "email": "",
       "password": "",
       "id": 2
-    },
-    {
-      "name": "",
-      "email": "",
-      "password": "",
-      "id": 3
-    },
-    {
-      "name": "Sumit Jagota",
-      "email": "sumit.scotts@gmail.com",
-      "password": "test",
-      "id": 4
-    },
-    {
-      "name": "asd",
-      "email": "asd@dfdf.com",
-      "password": "test",
-      "id": 5
-    },
-    {
-      "name": "sdfasd",
-      "email": "adsf2sd@eds.com",
-      "password": "test",
-      "id": 6
-    },
-    {
-      "name": "sdfasd",
-      "email": "adsf2sd@eds.com",
-      "password": "test",
-      "id": 7
-    },
-    {
-      "name": "sdfasd",
-      "email": "adsf2sd@eds.com",
-      "password": "test",
-      "id": 8
-    },
-    {
-      "name": "sdfasd",
-      "email": "adsf2sd@eds.com",
-      "password": "test",
-      "id": 9
-    },
-    {
-      "name": "sdfasd",
-      "email": "adsf2sd@eds.com",
-      "password": "test",
-      "id": 10
-    },
-    {
-      "name": "sdfasd",
-      "email": "adsf2sd@eds.com",
-      "password": "test",
-      "id": 11
-    },
-    {
-      "name": "sdfasd",
-      "email": "adsf2sd@eds.com",
-      "password": "test",
-      "id": 12
-    },
-    {
-      "name": "sdfasd",
-      "email": "adsf2sd@eds.com",
-      "password": "test",
-      "id": 13
-    },
-    {
-      "name": "sdfasd",
-      "email": "adsf2sd@eds.com",
-      "password": "test",
-      "id": 14
-    },
-    {
-      "name": "sdfasd",
-      "email": "adsf2sd@eds.com",
-      "password": "test",
-      "id": 15
-    },
-    {
-      "name": "sdfasd",
-      "email": "adsf2sd@eds.com",
-      "password": "test",
-      "id": 16
-    },
-    {
-      "name": "dsf",
-      "email": "sdf@asd.com",
-      "password": "test",
-      "id": 17
-    },
-    {
-      "name": "asd",
-      "email": "asd@sd.com",
-      "password": "test",
-      "id": 18
-    },
-    {
-      "name": "asd",
-      "email": "asd@dc.com",
-      "password": "test",
-      "id": 19
-    },
-    {
-      "name": "ewdf",
-      "email": "sf@dsf.com",
-      "password": "test",
-      "id": 20
     }
   ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    },
-    {
-      "id": 2,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  },
   "sellers": [
     {
       "id": 1,
@@ -234,6 +111,24 @@
       "description": "Mobile accesory",
       "image": "https://cdsassets.apple.com/live/SZLF0YNV/images/sp/111851_sp880-airpods-Pro-2nd-gen.png",
       "id": 6
+    }
+  ],
+  "Cart": [
+    {
+      "product": [
+        {
+          "name": "Galaxy S24 Ultra 2023",
+          "price": "$ 100",
+          "category": "Phone",
+          "color": "Grey",
+          "description": "Mobile phone",
+          "image": "https://images.samsung.com/is/image/samsung/p6pim/ca/2401/gallery/ca-galaxy-s24-s928-sm-s928wztfxac-thumb-539323547?$344_344_PNG$",
+          "id": 2,
+          "quantity": 2
+        }
+      ],
+      "userId": 1,
+      "id": 1
     }
   ]
 }
