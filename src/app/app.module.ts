@@ -29,6 +29,9 @@ import { SellerEffects } from '../stores/seller/sellers.effects';
 import { PRODUCT_DATA_STORE_NAME } from '../stores/product/product.state';
 import { productDataReducerFeatures, productDatareducer } from '../stores/product/product.reducers';
 import { ProductEffects } from '../stores/product/product.effects';
+import { CartComponent } from '../components/user/cart/cart.component';
+import { CheckoutComponent } from '../components/user/checkout/checkout.component';
+import { OrderListComponent } from '../components/user/order-list/order-list.component';
 
 
 @NgModule({
@@ -44,6 +47,9 @@ import { ProductEffects } from '../stores/product/product.effects';
     ProductDetailsComponent,
     UserAuthComponent,
     FooterComponent,
+    CartComponent,
+    CheckoutComponent,
+    OrderListComponent,
   ],
   imports: [
     BrowserModule,

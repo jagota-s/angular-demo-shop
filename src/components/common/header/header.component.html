@@ -1,6 +1,6 @@
 <nav class="nav">
   <h1><a routerLink="">E-Comm</a> </h1>
-  <div *ngIf="menutype==='default'" class="nav-search">
+  <div *ngIf="menutype==='default' || 'user'" class="nav-search">
     <input #searchInput type="text" (keyup)="searchProducts($event)" (blur)="hideSearchResults()"
       placeholder="Search Products">
     <button (click)="submitSearch(searchInput)">Search</button>
@@ -12,11 +12,12 @@
   </div>
 
   <div [ngSwitch]="menutype">
+    
     <ul *ngSwitchCase="'default'">
       <li><a routerLink="">Home</a></li>
       <li><a routerLink="/seller-auth">Seller</a></li>
       <li><a routerLink="/user-auth">Login/Sign-up</a></li>
-      <li><a href="">Cart {{cartCoount}}</a></li>
+      <li><a routerLink="/cart">Cart {{cartCoount}}</a></li>
     </ul>
 
     <ul *ngSwitchCase="'seller'">
@@ -27,12 +28,10 @@
     </ul>
 
     <ul *ngSwitchCase="'user'">
-      <li><a href="">Cart {{cartCoount}}</a></li>
+      <li><a routerLink="/cart">Cart {{cartCoount}}</a></li>
       <li><a (click)="userLogout()">Logout</a></li>
       <li><a href="#">{{userName | titlecase}}</a></li>
     </ul>
 
   </div>
-
-
 </nav>

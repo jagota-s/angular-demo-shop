@@ -9,6 +9,8 @@ import { SellerUpdateProductComponent } from '../components/seller/seller-update
 import { SearchPageComponent } from '../components/search-page/search-page.component';
 import { ProductDetailsComponent } from '../components/product-details/product-details.component';
 import { UserAuthComponent } from '../components/user/user-auth/user-auth.component';
+import { CartComponent } from '../components/user/cart/cart.component';
+import { CheckoutComponent } from '../components/user/checkout/checkout.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,6 +21,8 @@ const routes: Routes = [
   { path: 'search/:query', component: SearchPageComponent },
   { path: 'details/:id', component: ProductDetailsComponent },
   { path: 'user-auth', component: UserAuthComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'checkout', component: CheckoutComponent },
   { path: '**', redirectTo: '' }
 ];
 

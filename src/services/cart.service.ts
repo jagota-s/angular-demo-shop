@@ -27,24 +27,24 @@ export class CartService {
     }
   }
 
-  // removeFromCart(id: string) {
-  //   if (!localStorage.getItem('loggedInUser')) {
-  //     // Handle local cart for non-logged-in users
-  //     let cart = [];
-  //     if (localStorage.getItem('cart')) {
-  //       cart = JSON.parse(localStorage.getItem('cart')!);
-  //       cart = cart.filter((product: Product) => product.id !== id);
-  //       localStorage.setItem('cart', JSON.stringify(cart));
-  //       this.cartCount.next(cart.length);
-  //     }
-  //   } else {
-  //     // Handle server-side cart for logged-in users
-  //     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')!);
-  //     const userID = loggedInUser[0].id;
+  removeFromCart(id: string) {
+    if (!localStorage.getItem('loggedInUser')) {
+      // Handle local cart for non-logged-in users
+      let cart = [];
+      if (localStorage.getItem('cart')) {
+        cart = JSON.parse(localStorage.getItem('cart')!);
+        cart = cart.filter((product: Product) => product.id !== id);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        this.cartCount.next(cart.length);
+      }
+    } else {
+      // Handle server-side cart for logged-in users
+      const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')!);
+      const userID = loggedInUser[0].id;
 
-  //     this.http.delete(`http://localhost:3000/cart/${id}`).subscribe();
-  //   }
-  // }
+      this.http.delete(`http://localhost:3000/cart/${id}`).subscribe();
+    }
+  }
 
 
 
