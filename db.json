@@ -165,6 +165,16 @@
           "image": "https://d2n9ha3hrkss16.cloudfront.net/uploads/stage/stage_image/5020/optimized_product_thumb_a11409base.jpg",
           "id": 1,
           "quantity": 3
+        },
+        {
+          "name": "Galaxy S24 Ultra 2023",
+          "price": "$ 100",
+          "category": "Phone",
+          "color": "Grey",
+          "description": "Mobile phone",
+          "image": "https://images.samsung.com/is/image/samsung/p6pim/ca/2401/gallery/ca-galaxy-s24-s928-sm-s928wztfxac-thumb-539323547?$344_344_PNG$",
+          "id": 2,
+          "quantity": 1
         }
       ],
       "userId": 1,
@@ -179,6 +189,14 @@
       "totalPrice": 10000,
       "userId": 1,
       "id": 1
+    },
+    {
+      "email": "",
+      "address": "",
+      "contact": "",
+      "totalPrice": 10000,
+      "userId": 1,
+      "id": 2
     }
   ]
 }

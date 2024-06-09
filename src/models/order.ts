@@ -4,4 +4,6 @@ export interface Order {
   contact: string;
   totalPrice?: string;
   userId?: string;
+  id?: number;
+
 }

@@ -10,11 +10,11 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
   orderNow(order: Order) {
-    return this.http.post('http://localhost:3000/orders', order);
+    return this.http.post<Order>('http://localhost:3000/orders', order);
   }
 
   getOrders(userId: string) {
-    return this.http.get('http://localhost:3000/orders?userId=' + userId);
+    return this.http.get<Order[]>('http://localhost:3000/orders?userId=' + userId);
   }
 
 

@@ -11,6 +11,7 @@ import { ProductDetailsComponent } from '../components/product-details/product-d
 import { UserAuthComponent } from '../components/user/user-auth/user-auth.component';
 import { CartComponent } from '../components/user/cart/cart.component';
 import { CheckoutComponent } from '../components/user/checkout/checkout.component';
+import { OrderListComponent } from '../components/user/order-list/order-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'user-auth', component: UserAuthComponent },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'order-list', component: OrderListComponent },
   { path: '**', redirectTo: '' }
 ];
 
