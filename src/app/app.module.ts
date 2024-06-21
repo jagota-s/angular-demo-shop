@@ -32,6 +32,9 @@ import { ProductEffects } from '../stores/product/product.effects';
 import { CartComponent } from '../components/user/cart/cart.component';
 import { CheckoutComponent } from '../components/user/checkout/checkout.component';
 import { OrderListComponent } from '../components/user/order-list/order-list.component';
+import { CART_DATA_STORE_NAME } from '../stores/cart/cart.state';
+import { cartDataReducer } from '../stores/cart/cart.reducer';
+import { CartEffects } from '../stores/cart/cart.effects';
 
 
 @NgModule({
@@ -61,9 +64,10 @@ import { OrderListComponent } from '../components/user/order-list/order-list.com
     StoreModule.forRoot({
       [USER_DATA_STORE_NAME]: userDatareducer,
       [SELLER_DATA_STORE_NAME]: sellerDatareducer,
-      [PRODUCT_DATA_STORE_NAME]: productDatareducer
+      [PRODUCT_DATA_STORE_NAME]: productDatareducer,
+      [CART_DATA_STORE_NAME]: cartDataReducer,
     }),
-    EffectsModule.forRoot([UserEffects, SellerEffects, ProductEffects]),
+    EffectsModule.forRoot([UserEffects, SellerEffects, ProductEffects, CartEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: false }),
   ],
   providers: [

@@ -11,6 +11,12 @@
       "email": "",
       "password": "",
       "id": 2
+    },
+    {
+      "name": "Sumit Jagota",
+      "email": "test2@test.com",
+      "password": "test",
+      "id": 3
     }
   ],
   "sellers": [
@@ -117,34 +123,34 @@
     {
       "product": [
         {
-          "name": "Galaxy S24 Ultra 2023",
-          "price": "$ 100",
+          "name": "iPhone 14 Pro max",
+          "price": "$ 1000",
           "category": "Phone",
           "color": "Grey",
-          "description": "Mobile phone",
-          "image": "https://images.samsung.com/is/image/samsung/p6pim/ca/2401/gallery/ca-galaxy-s24-s928-sm-s928wztfxac-thumb-539323547?$344_344_PNG$",
-          "id": 2,
-          "quantity": 2
-        },
-        {
-          "name": "Galaxy S24 Ultra 2023",
-          "price": "$ 100",
-          "category": "Phone",
-          "color": "Grey",
-          "description": "Mobile phone",
-          "image": "https://images.samsung.com/is/image/samsung/p6pim/ca/2401/gallery/ca-galaxy-s24-s928-sm-s928wztfxac-thumb-539323547?$344_344_PNG$",
-          "id": 2,
+          "description": "Latest iPhone",
+          "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-card-40-iphone15prohero-202309_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95&.v=1693086369818",
+          "id": 4,
           "quantity": 1
         },
         {
-          "name": "Glaxy Tab 2023",
-          "price": "$ 700",
-          "category": "Tablets",
-          "color": "Black",
-          "description": "Mobile phone",
-          "image": "https://webobjects2.cdw.com/is/image/CDW/6619703?wid=784&hei=477&resMode=bilin&fit=fit,1",
-          "id": 3,
-          "quantity": 3
+          "name": "Macbook m1",
+          "price": "$ 2999",
+          "category": "Laptop",
+          "color": "Silver",
+          "description": "Workstation",
+          "image": "https://d2n9ha3hrkss16.cloudfront.net/uploads/stage/stage_image/5020/optimized_product_thumb_a11409base.jpg",
+          "id": 1,
+          "quantity": 1
+        },
+        {
+          "name": "Macbook m1",
+          "price": "$ 2999",
+          "category": "Laptop",
+          "color": "Silver",
+          "description": "Workstation",
+          "image": "https://d2n9ha3hrkss16.cloudfront.net/uploads/stage/stage_image/5020/optimized_product_thumb_a11409base.jpg",
+          "id": 1,
+          "quantity": 1
         },
         {
           "name": "Air pods Pro 2nd Gen",
@@ -164,7 +170,27 @@
           "description": "Workstation",
           "image": "https://d2n9ha3hrkss16.cloudfront.net/uploads/stage/stage_image/5020/optimized_product_thumb_a11409base.jpg",
           "id": 1,
-          "quantity": 3
+          "quantity": 1
+        },
+        {
+          "name": "Glaxy Tab 2023",
+          "price": "$ 700",
+          "category": "Tablets",
+          "color": "Black",
+          "description": "Mobile phone",
+          "image": "https://webobjects2.cdw.com/is/image/CDW/6619703?wid=784&hei=477&resMode=bilin&fit=fit,1",
+          "id": 3,
+          "quantity": 1
+        },
+        {
+          "name": "Galaxy S24 Ultra 2023",
+          "price": "$ 100",
+          "category": "Phone",
+          "color": "Grey",
+          "description": "Mobile phone",
+          "image": "https://images.samsung.com/is/image/samsung/p6pim/ca/2401/gallery/ca-galaxy-s24-s928-sm-s928wztfxac-thumb-539323547?$344_344_PNG$",
+          "id": 2,
+          "quantity": 1
         },
         {
           "name": "Galaxy S24 Ultra 2023",
@@ -197,6 +223,22 @@
       "totalPrice": 10000,
       "userId": 1,
       "id": 2
+    },
+    {
+      "email": "",
+      "address": "",
+      "contact": "",
+      "totalPrice": 10000,
+      "userId": 1,
+      "id": 3
+    },
+    {
+      "email": "",
+      "address": "",
+      "contact": "",
+      "totalPrice": 10000,
+      "userId": 1,
+      "id": 4
     }
   ]
 }

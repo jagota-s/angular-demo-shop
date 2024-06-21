@@ -10,6 +10,8 @@ import { Subscription, catchError, filter, map } from 'rxjs';
 import { CartService } from '../../../services/cart.service';
 import { Product } from '../../../models/product';
 import { Cart } from '../../../models/cart';
+import { CartDataStore } from '../../../stores/cart/cart.state';
+import { addToCartFromApi, updateCart, updateCartFromApi } from '../../../stores/cart/cart.action';
 
 @Component({
   selector: 'app-user-auth',
@@ -27,7 +29,8 @@ export class UserAuthComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private store: Store<userDataStore>,
-    private cartService: CartService) { }
+    private cartService: CartService,
+  private cartStore: Store<CartDataStore>) { }
 
   subscription: Subscription[] = [];
 
@@ -93,11 +96,13 @@ export class UserAuthComponent implements OnInit {
             localCart.forEach((product: Product) => {
               existingCart.product.push(product);
             });
-            this.cartService.updateCart(existingCart).subscribe();
+            //this.cartService.updateCart(existingCart).subscribe();
+            this.cartStore.dispatch(updateCartFromApi({ call: this.cartService.updateCart(existingCart) }));
           } else {
             // Create a new cart with the local cart items
             const cartData: Cart = { product: localCart, userId: userID };
-            this.cartService.addToCart(cartData).subscribe();
+            // this.cartService.addToCart(cartData).subscribe();
+            this.cartStore.dispatch(addToCartFromApi({ call: this.cartService.addToCart(cartData) }));
           }
         }
       );

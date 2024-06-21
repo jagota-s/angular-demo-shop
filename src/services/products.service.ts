@@ -13,11 +13,6 @@ export class ProductsService {
 
   addProduct(data: Product) {
     return this.http.post<Product>('http://localhost:3000/products', data);
-    // .pipe(
-    //   filter((response) => response !== null),
-    //   map((response) => this.message.next('Product added successfully')),
-    //   catchError(async (error) => this.message.next('Product not added'))
-    // ).subscribe();
   }
 
   getAllProducts() {
@@ -25,7 +20,7 @@ export class ProductsService {
   }
 
   deleteProduct(id: string) {
-    return this.http.delete<Product>(`http://localhost:3000/products/${id}`);
+    return this.http.delete<{}>(`http://localhost:3000/products/${id}`);
   }
 
   getProductById(id: string) {
@@ -35,14 +30,6 @@ export class ProductsService {
   updateProduct(id: string, data: Product) {
     return this.http.put<Product>(`http://localhost:3000/products/${id}`, data);
   }
-
-  // getPopularProducts() {
-  //   return this.http.get<Product[]>('http://localhost:3000/products?_limit=3');
-  // }
-
-  // getTrendingProducts() {
-  //   return this.http.get<Product[]>('http://localhost:3000/products?_limit=8');
-  // }
 
   searchProduct(searchTerm: string) {
     return this.http.get<Product[]>(`http://localhost:3000/products?q=${searchTerm}`);

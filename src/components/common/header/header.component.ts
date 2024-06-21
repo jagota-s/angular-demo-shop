@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   get sellerName() {
-    const val = JSON.parse(localStorage.getItem('seller')!).name;
+    const val = JSON.parse(localStorage.getItem('loggedInSeller')!).name;
     return val;
   }
 
