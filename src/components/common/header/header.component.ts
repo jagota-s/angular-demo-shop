@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   menutype = UserType.Default;
   searchresult: Product[] | undefined;
-  cartCoount: number = 0;
+  cartCoount: number = 1;
   subscription: Subscription[] = [];
 
   constructor(private router: Router, private productService: ProductsService, private cartService: CartService) { }
@@ -86,9 +86,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   getCartCount() {
-    const cart = JSON.parse(localStorage.getItem('cart')!);
-    this.cartCoount = cart.length;
-    return this.cartCoount;
+    // const cart = JSON.parse(localStorage.getItem('cart')!);
+    // this.cartCoount = cart.length;
+    return 2;
   }
 
   ngOnDestroy(): void {

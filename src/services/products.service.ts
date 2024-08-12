@@ -33,5 +33,45 @@ export class ProductsService {
 
   searchProduct(searchTerm: string) {
     return this.http.get<Product[]>(`http://localhost:3000/products?q=${searchTerm}`);
+    //return this.apiService.makeCall('GET', `http://localhost:3000/products?q=${searchTerm}`);
   }
+
+
+  // // API service
+  // makeCall(type: 'POST' | 'GET' | 'PUT' | 'DELETE', url: string, payload: any) {
+  //   switch (type) {
+  //     case 'POST':
+  //       return this.http.post(url, payload).pipe(
+  //         catchError((error) => {
+  //           this.handleErrors(error);
+  //           return error;
+  //         })
+  //       );
+  //     case 'GET':
+  //       return this.http.get(url).pipe(
+  //         catchError((error) => {
+  //           this.handleErrors(error);
+  //           return error;
+  //         })
+  //       );
+  //     case 'PUT':
+  //       return this.http.put(url, payload).pipe(
+  //         catchError((error) => {
+  //           this.handleErrors(error);
+  //           return error;
+  //         })
+  //       );
+  //     case 'DELETE':
+  //       return this.http.delete(url).pipe(
+  //         catchError((error) => {
+  //           this.handleErrors(error);
+  //           return error;
+  //         })
+  //       );
+  //   }
+  // }
+
+  // handleErrors(error: any) {
+
+  // }
 }

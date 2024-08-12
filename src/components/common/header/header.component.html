@@ -28,7 +28,7 @@
     </ul>
 
     <ul *ngSwitchCase="'user'">
-      <li><a [routerLink]="cartCoount>0? 'cart': null">Cart {{cartCoount}}</a></li>
+      <li><a [routerLink]="getCartCount()>0? 'cart': null">Cart {{cartCoount}}</a></li>
       <li><a (click)="userLogout()">Logout</a></li>
       <li><a href="#">{{userName | titlecase}}</a></li>
     </ul>
